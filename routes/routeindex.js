@@ -32,10 +32,15 @@ router.get('/edit/:id', async (req, res) => {
 
 router.post('/edit/:id', async(req, res) =>{
     let {id} = req.params;
-    let updatePost = await post.update({_id:id}, req.body);
+    await post.update({_id:id}, req.body);
     res.redirect('/');
 })
 
+router.get('/delete/:id', async(req, res) => {
+  let {id} = req.params;
+  let oldPost = await post.findById(id);
+  res.render('delete', {oldPost});
+})
 
 
 module.exports = router;
