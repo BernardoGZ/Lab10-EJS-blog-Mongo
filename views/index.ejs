@@ -4,21 +4,22 @@
 
 <div class="container">
   <a href ="/newPost"><button type="button" class="btn btn-primary">Create New Post</button></a>
+  <p> </p>
 </div>
 
 <main role="main" class="container">
   <div class="row">
     <div class="col-md-8 blog-main">
 
-      <% if (posts.lenght == null) { %> 
+      <% if (posts.length == 0) { %> 
         
         <h2> No posts at the time</h2>
 
-      <% } else { for(let i = 0; i < posts.lenght; i++) { %>
+      <% } else { for(let i = 0; i < posts.length; i++) { %>
       
       <div class="blog-post">
         <h2 class="blog-post-title"><%= posts[i].title %></h2>
-        <p class="blog-post-meta"><%= posts[i].post_date() %> by <a href="#"><%= posts[i].author%></a> </p>
+        <p class="blog-post-meta"><%= posts[i].post_date %> by <a href="#"><%= posts[i].author%></a> </p>
         <p><%= posts[i].post_data %></p>
         <a class = "btn btn-danger" href =""> Delete </a>
         <a class = "btn btn-info" href =""> Edit </a>
