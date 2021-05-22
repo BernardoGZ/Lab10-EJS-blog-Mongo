@@ -25,6 +25,12 @@ router.post('/newPost', async (req,res) =>{
 
 });
 
+router.get('/edit/:id', async (req, res) => {
+    var {id} = req.params;
+    var oldPost = await post.findById(id);
+    res.render('edit', {oldPost})
+})
+
 
 
 module.exports = router;

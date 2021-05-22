@@ -22,7 +22,7 @@
         <p class="blog-post-meta"><%= posts[i].post_date %> by <a href="#"><%= posts[i].author%></a> </p>
         <p><%= posts[i].post_data %></p>
         <a class = "btn btn-danger" href =""> Delete </a>
-        <a class = "btn btn-info" href =""> Edit </a>
+        <a class = "btn btn-info" href ="/edit/<%= posts[i]._id %>"> Edit </a>
       </div>
 
       <% } }  %>
