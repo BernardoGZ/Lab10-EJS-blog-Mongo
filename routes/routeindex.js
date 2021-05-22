@@ -6,8 +6,7 @@ const post = require('../model/post');
 
 
 router.get('/', async function(req,res){
-  var posts = await post.find();
-  console.log(posts);
+  let posts = await post.find();
   res.render('index',{posts});
 });
 
@@ -19,16 +18,22 @@ router.get('/newPost', async (req,res) =>{
 router.post('/newPost', async (req,res) =>{
  
   console.log(req.body);
-  var newBlogPost = new post(req.body);
+  let newBlogPost = new post(req.body);
   await newBlogPost.save();
   res.redirect("/");
 
 });
 
 router.get('/edit/:id', async (req, res) => {
-    var {id} = req.params;
-    var oldPost = await post.findById(id);
+    let {id} = req.params;
+    let oldPost = await post.findById(id);
     res.render('edit', {oldPost})
+})
+
+router.post('/edit/:id', async(req, res) =>{
+    let {id} = req.params;
+    let updatePost = await post.update({_id:id}, req.body);
+    res.redirect('/');
 })
 
 
