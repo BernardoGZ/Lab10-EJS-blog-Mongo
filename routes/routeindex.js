@@ -42,5 +42,11 @@ router.get('/delete/:id', async(req, res) => {
   res.render('delete', {oldPost});
 })
 
+router.post('/delete/:id', async(req, res) => {
+  let {id} = req.params;
+  await post.deleteOne({_id: id})
+  res.redirect('/');
+})
+
 
 module.exports = router;
